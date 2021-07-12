@@ -1,5 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-/* :root {
-  --custom-blue: #296682ff;
-  --custom-green: #24982aff;
-} */
+:root {
+  /* --custom-blue: #296682ff;
+  --custom-green: #24982aff; */
+  --custom-grey: #ebeced;
+}
+
+main {
+  background-color: var(--custom-grey);
+  padding: 3rem 1rem;
+}
+
+.custom-price {
+  color: var(--bs-red);
+  font-weight: 700;
+}
+
+.custom-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}

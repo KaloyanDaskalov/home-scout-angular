@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main',
@@ -8,6 +8,10 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 })
 export class MainComponent implements OnInit {
   faHeart = faHeart;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faEuroSign = faEuroSign;
+  faHome = faHome;
+
   constructor() { }
 
   ngOnInit(): void {
