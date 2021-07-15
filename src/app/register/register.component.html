@@ -10,7 +10,7 @@
                   Sign up
                 </p>
 
-                <form class="mx-1 mx-md-4" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <form class="mx-1 mx-md-4" (ngSubmit)="onSubmit()" #f="ngForm">
                   <!-- username -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon class="fa-lg me-3 fa-fw" [icon]="faUser"></fa-icon>
@@ -77,18 +77,19 @@
                         ngModel
                         name="repeatPassword"
                         required
+                        [ngClass]="{
+                          'is-invalid':
+                            f.form.status === 'VALID' &&
+                            f.form.value.password !==
+                              f.form.value.repeatPassword
+                        }"
                       />
                       <label class="form-label" for="repeatPassword">
                         Repeat your password
                       </label>
                     </div>
                   </div>
-                  <small
-                    class="text-center text-danger d-block"
-                    [ngClass]="{ invisible: passMatch }"
-                  >
-                    Repeat password don't match
-                  </small>
+
                   <p class="text-center">
                     * Username must be 3 to 15 characters
                     <br />
@@ -102,7 +103,11 @@
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg"
+                      [disabled]="f.form.status === 'INVALID'"
+                    >
                       Register
                     </button>
                   </div>

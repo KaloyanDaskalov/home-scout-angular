@@ -10,98 +10,132 @@
                   Create
                 </p>
 
-                <form class="mx-1 mx-md-4">
+                <form class="mx-1 mx-md-4" (ngSubmit)="onSubmit()" #f="ngForm">
+                  <!-- title -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon class="fa-lg me-3 fa-fw" [icon]="faHome"></fa-icon>
-                    <div class="form-outline flex-fill mb-0">
+                    <div class="form-floating flex-fill mb-0">
                       <input
                         type="text"
-                        id="form3Example1c"
-                        class="form-control is-valid"
+                        id="title"
+                        class="form-control"
+                        placeholder="Title"
+                        ngModel
+                        name="title"
+                        required
+                        minlength="5"
+                        maxlength="50"
                       />
-                      <label class="form-label" for="form3Example1c"
-                        >Title</label
-                      >
+                      <label class="form-label" for="title">Title</label>
                     </div>
                   </div>
-
+                  <!-- price -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon
                       class="fa-lg me-3 fa-fw"
                       [icon]="faDollarSign"
                     ></fa-icon>
-                    <div class="form-outline flex-fill mb-0">
+                    <div class="form-floating flex-fill mb-0">
                       <input
-                        type="text"
-                        id="form3Example3c"
-                        class="form-control is-invalid"
+                        type="number"
+                        id="price"
+                        class="form-control"
+                        placeholder="Price"
+                        ngModel
+                        name="price"
+                        required
+                        min="1"
+                        max="1000000"
                       />
-                      <label class="form-label" for="form3Example3c"
-                        >Price</label
-                      >
+                      <label class="form-label" for="price">Price</label>
                     </div>
                   </div>
-
+                  <!-- image url -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon
                       class="fa-lg me-3 fa-fw"
                       [icon]="faImage"
                     ></fa-icon>
-                    <div class="form-outline flex-fill mb-0">
+                    <div class="form-floating flex-fill mb-0">
                       <input
                         type="text"
-                        id="form3Example4c"
+                        id="imageUrl"
                         class="form-control"
+                        placeholder="Image Url"
+                        ngModel
+                        name="imageUrl"
+                        required
                       />
-                      <label class="form-label" for="form3Example4c"
-                        >Image URL</label
-                      >
+                      <label class="form-label" for="imageUrl">Image URL</label>
                     </div>
                   </div>
-
+                  <!-- address -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon class="fa-lg me-3 fa-fw" [icon]="faMap"></fa-icon>
-                    <div class="form-outline flex-fill mb-0">
+                    <div class="form-floating flex-fill mb-0">
                       <input
                         type="text"
-                        id="form3Example4cd"
+                        id="address"
                         class="form-control"
+                        placeholder="Address"
+                        ngModel
+                        name="address"
+                        required
+                        minlength="5"
+                        maxlength="50"
                       />
-                      <label class="form-label" for="form3Example4cd"
-                        >Address</label
+                      <label class="form-label" for="address">Address </label>
+                    </div>
+                  </div>
+                  <!-- select type -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon class="fa-lg me-3 fa-fw" [icon]="faHome"></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <select
+                        id="type"
+                        class="form-select"
+                        aria-label="Select-type"
+                        ngModel
+                        name="type"
+                        required
+                      >
+                        <option>House</option>
+                        <option>Flat</option>
+                        <option>Magazine</option>
+                      </select>
+                      <label for="type" class="label">Type</label>
+                    </div>
+                  </div>
+                  <!-- description -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon
+                      class="fa-lg me-3 fa-fw"
+                      [icon]="faInfoCircle"
+                    ></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <textarea
+                        class="form-control"
+                        id="description"
+                        placeholder="Description"
+                        style="height: 7rem"
+                        ngModel
+                        name="description"
+                        required
+                        minlength="20"
+                        maxlength="500"
+                      ></textarea>
+                      <label for="description" class="floatingTextarea"
+                        >Description</label
                       >
                     </div>
                   </div>
-                  <!-- select and description -->
-                  <div class="form-floating mb-4">
-                    <select
-                      id="inputState"
-                      class="form-select"
-                      aria-label="Floating label select example"
-                    >
-                      <option selected>Choose...</option>
-                      <option>House</option>
-                      <option>Flat</option>
-                      <option>Magazine</option>
-                    </select>
-                    <label for="inputState" class="label">Type</label>
-                  </div>
-                  <div class="form-floating mb-4">
-                    <textarea
-                      class="form-control"
-                      placeholder="Description"
-                      id="exampleFormControlTextarea1"
-                      style="height: 7rem"
-                    ></textarea>
-                    <label
-                      for="exampleFormControlTextarea1"
-                      class="floatingTextarea"
-                      >Description</label
-                    >
-                  </div>
-                  <!-- end select and description -->
+                  <!-- end of fields -->
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg"
+                      [disabled]="f.form.status === 'INVALID'"
+                    >
                       Create
                     </button>
                   </div>

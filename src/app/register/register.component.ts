@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faUser, faEnvelope, faLock, faKey } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('f') formData!: NgForm;
   faUser = faUser;
   faEnvelope = faEnvelope;
   faLock = faLock;
@@ -19,11 +20,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit (f: NgForm) {
-    console.log('Form submit', f.form.status);
+  onSubmit () {
+    // console.log('Form submit', this.formData.form.controls.repeatPassword.touched);
+    // console.log('Form submit', this.formData.form.value);
 
-    if (f.form.value.password !== f.form.value.repeatPassword) {
-      this.passMatch = false;
+    // if (formData.form.value.password === formData.form.value.repeatPassword)
+    // if match register else do nothing
     }
-  }
 }

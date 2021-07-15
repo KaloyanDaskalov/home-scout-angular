@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +8,7 @@ import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('f') formData!: NgForm;
   faUser = faUser;
   faEnvelope = faEnvelope;
   faLock = faLock;
@@ -15,5 +17,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onSubmit() {
+    console.log(this.formData.form);
+    
+  }
 }
