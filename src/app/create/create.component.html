@@ -10,7 +10,11 @@
                   Create
                 </p>
 
-                <form class="mx-1 mx-md-4" (ngSubmit)="onSubmit()" #f="ngForm">
+                <form
+                  class="mx-1 mx-md-4"
+                  [formGroup]="formData"
+                  (ngSubmit)="onSubmit()"
+                >
                   <!-- title -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon class="fa-lg me-3 fa-fw" [icon]="faHome"></fa-icon>
@@ -20,11 +24,7 @@
                         id="title"
                         class="form-control"
                         placeholder="Title"
-                        ngModel
-                        name="title"
-                        required
-                        minlength="5"
-                        maxlength="50"
+                        formControlName="title"
                       />
                       <label class="form-label" for="title">Title</label>
                     </div>
@@ -41,11 +41,7 @@
                         id="price"
                         class="form-control"
                         placeholder="Price"
-                        ngModel
-                        name="price"
-                        required
-                        min="1"
-                        max="1000000"
+                        formControlName="price"
                       />
                       <label class="form-label" for="price">Price</label>
                     </div>
@@ -62,9 +58,7 @@
                         id="imageUrl"
                         class="form-control"
                         placeholder="Image Url"
-                        ngModel
-                        name="imageUrl"
-                        required
+                        formControlName="imageUrl"
                       />
                       <label class="form-label" for="imageUrl">Image URL</label>
                     </div>
@@ -78,11 +72,7 @@
                         id="address"
                         class="form-control"
                         placeholder="Address"
-                        ngModel
-                        name="address"
-                        required
-                        minlength="5"
-                        maxlength="50"
+                        formControlName="address"
                       />
                       <label class="form-label" for="address">Address </label>
                     </div>
@@ -95,13 +85,11 @@
                         id="type"
                         class="form-select"
                         aria-label="Select-type"
-                        ngModel
-                        name="type"
-                        required
+                        formControlName="type"
                       >
-                        <option>House</option>
-                        <option>Flat</option>
-                        <option>Magazine</option>
+                        <option *ngFor="let type of types" [value]="type">
+                          {{ type | titlecase }}
+                        </option>
                       </select>
                       <label for="type" class="label">Type</label>
                     </div>
@@ -118,11 +106,7 @@
                         id="description"
                         placeholder="Description"
                         style="height: 7rem"
-                        ngModel
-                        name="description"
-                        required
-                        minlength="20"
-                        maxlength="500"
+                        formControlName="description"
                       ></textarea>
                       <label for="description" class="floatingTextarea"
                         >Description</label
@@ -134,7 +118,7 @@
                     <button
                       type="submit"
                       class="btn btn-primary btn-lg"
-                      [disabled]="f.form.status === 'INVALID'"
+                      [disabled]="!canSubmit"
                     >
                       Create
                     </button>
