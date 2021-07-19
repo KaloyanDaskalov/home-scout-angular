@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { AdvertisementService } from '../advertisement.service';
+import { Advertisement } from '../interfaces/advertisement';
 
 @Component({
   selector: 'app-create',
@@ -8,6 +10,7 @@ import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  data!: Advertisement;
   types: string[]= ['house', 'flat', 'office', 'land' ];
   imagePattern : RegExp = /^https?:\/\//;
   canSubmit: boolean = false;
@@ -18,7 +21,7 @@ export class CreateComponent implements OnInit {
   faMap = faMap;
   faInfoCircle = faInfoCircle;
 
-  constructor() { }
+  constructor(private advertisementService: AdvertisementService) { }
 
   ngOnInit(): void {
     this.formData = new FormGroup({
@@ -38,11 +41,14 @@ export class CreateComponent implements OnInit {
     if (!this.imagePattern.test(control.value)) {
       return {'invalidImageUrl': true}
     }
-
     return null;
   }
 
   onSubmit () {
-    console.log(this.formData);
+    this.data = this.formData.value;
+    this.advertisementService.create(this.data).then(() => {
+      console.log('Created new item successfully!', this.data);
+      //TODO clear form and create global info/error 
+  })
   }
 }
