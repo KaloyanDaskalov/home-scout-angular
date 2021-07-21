@@ -1,0 +1,35 @@
+<div class="card">
+  <img [src]="advertisementCard.imageUrl" alt="image" class="card-img-top" />
+  <div class="card-body">
+    <div class="custom-card-title">
+      <h3 class="card-title">{{ advertisementCard.title }}</h3>
+      <p>
+        <fa-icon [icon]="faHome"></fa-icon>
+        <strong> {{ advertisementCard.type | titlecase }}</strong>
+      </p>
+    </div>
+    <address>
+      <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+      <em> {{ advertisementCard.address }}</em>
+    </address>
+    <h5 class="custom-price">
+      <fa-icon [icon]="faEuroSign"></fa-icon>
+      {{ advertisementCard.price }}
+    </h5>
+    <p class="card-text" *ngIf="showDetails">
+      {{ advertisementCard.description }}
+    </p>
+    <div class="d-flex justify-content-between">
+      <button
+        type="button"
+        class="btn btn-outline-success btn-sm"
+        (click)="onClick()"
+      >
+        {{ btnDetails }}
+      </button>
+      <a href="" class="btn btn-outline-danger btn-sm">
+        <fa-icon [icon]="faHeart"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>

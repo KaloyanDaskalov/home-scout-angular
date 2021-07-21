@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faHeart, faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-solid-svg-icons';
+import { AdvertisementService } from '../advertisement.service';
+import { Advertisement } from '../interfaces/advertisement';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -7,14 +9,23 @@ import { faHeart, faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-s
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  faHeart = faHeart;
-  faMapMarkerAlt = faMapMarkerAlt;
-  faEuroSign = faEuroSign;
-  faHome = faHome;
+  advertisements: Advertisement[] = [] ; 
 
-  constructor() { }
+  constructor(private advertisementService: AdvertisementService) { }
 
   ngOnInit(): void {
+    this.retrieveAdvertisements();
   }
 
+  retrieveAdvertisements(): void {
+    this.advertisementService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.advertisements = data;
+    });
+  }
 }

@@ -23,12 +23,12 @@ export class AdvertisementService {
     return this.advertisementRef.push(advertisement);
   }
 
-  update(key: string, value: any): Promise<void> {
-    return this.advertisementRef.update(key, value);
+  update(id: string, value: Advertisement): Promise<void> {
+    return this.advertisementRef.update(id, value);
   }
 
-  delete(key: string): Promise<void> {
-    return this.advertisementRef.remove(key);
+  delete(id: string): Promise<void> {
+    return this.advertisementRef.remove(id);
   }
 
   deleteAll(): Promise<void> {
