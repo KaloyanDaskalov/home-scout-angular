@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { faUser, faSort } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,9 +12,13 @@ export class NavigationComponent implements OnInit {
   faUser = faUser;
   faSort = faSort;
   
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSearch( inputEl: HTMLInputElement) {
+    this.router.navigate([''], {queryParams: {search: inputEl.value}})
   }
 
 }

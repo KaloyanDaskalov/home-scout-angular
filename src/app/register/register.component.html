@@ -79,7 +79,7 @@
                         required
                         [ngClass]="{
                           'is-invalid':
-                            f.form.status === 'VALID' &&
+                            f.form.valid &&
                             f.form.value.password !==
                               f.form.value.repeatPassword
                         }"
@@ -106,7 +106,7 @@
                     <button
                       type="submit"
                       class="btn btn-primary btn-lg"
-                      [disabled]="f.form.status === 'INVALID'"
+                      [disabled]="!f.form.valid"
                     >
                       Register
                     </button>

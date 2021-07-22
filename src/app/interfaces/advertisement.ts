@@ -1,11 +1,11 @@
-// export interface Advertisement {
+// export class Advertisement {
 //     id?: string | null;
-//     title: string;
-//     price: number;
-//     imageUrl: string;
-//     address: string;
-//     type: string;
-//     description: string;
+//     title?: string;
+//     price?: number;
+//     imageUrl?: string;
+//     address?: string;
+//     type?: string;
+//     description?: string;
 // }
 
 export interface Advertisement {
