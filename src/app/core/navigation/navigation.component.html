@@ -48,18 +48,24 @@
               <fa-icon [icon]="faUser" size="2x"></fa-icon>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="login">Login</a></li>
               <li>
-                <a class="dropdown-item" routerLink="register">Register</a>
+                <a class="dropdown-item" routerLink="/auth/login">Login</a>
               </li>
               <li>
-                <a class="dropdown-item" routerLink="create">Create</a>
+                <a class="dropdown-item" routerLink="/auth/register"
+                  >Register</a
+                >
               </li>
               <li>
-                <a class="dropdown-item" routerLink="profile">Profile</a>
+                <a class="dropdown-item" routerLink="/advertisement/create"
+                  >Create</a
+                >
               </li>
               <li>
-                <a class="dropdown-item" routerLink="#">Logout</a>
+                <a class="dropdown-item" routerLink="/profile">Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="">Logout</a>
               </li>
             </ul>
           </li>

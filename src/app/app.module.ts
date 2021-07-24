@@ -1,41 +1,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+//component modules
+import { CoreModule } from './core/core.module';
 import { MainModule } from './main/main.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { NotFoundModule } from './not-found/not-found.module';
 //firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 // Routes
-import { MainComponent } from './main/main.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { CreateComponent } from './create/create.component';
-import { ProfileComponent } from './profile/profile.component';
+// import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainComponent,
-    RegisterComponent,
-    LoginComponent,
-    CreateComponent,
-    ProfileComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     CoreModule,
-    FontAwesomeModule,
+    MainModule,
+    AuthModule,
+    UserModule,
+    NotFoundModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    MainModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
