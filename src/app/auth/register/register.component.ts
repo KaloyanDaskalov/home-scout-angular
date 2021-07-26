@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { faUser, faEnvelope, faLock, faKey } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   @ViewChild('f') formData!: NgForm;
   faUser = faUser;
   faEnvelope = faEnvelope;
@@ -16,15 +17,14 @@ export class RegisterComponent implements OnInit {
   faKey = faKey;
   passMatch: boolean = true;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private authService: AuthService) {
   }
-  onSubmit () {
-    // console.log('Form submit', this.formData.form.controls.repeatPassword.touched);
-    // console.log('Form submit', this.formData.form.value);
 
-    // if (formData.form.value.password === formData.form.value.repeatPassword)
-    // if match register else do nothing
+  onSubmit () {
+    const {email = '', password = '', repeatPassword = ''} = this.formData.form.value;
+
+    if ( this.formData.valid && (password === repeatPassword)) {
+      this.authService.SignUp(email, password);
+    }
     }
 }

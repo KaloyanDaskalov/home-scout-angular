@@ -64,8 +64,13 @@
               <li>
                 <a class="dropdown-item" routerLink="/profile">Profile</a>
               </li>
-              <li>
-                <a class="dropdown-item" routerLink="">Logout</a>
+              <li class="dropdown-item">
+                <button
+                  class="btn btn-sm btn-outline-success"
+                  (click)="onLogout()"
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </li>

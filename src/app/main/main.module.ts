@@ -14,7 +14,7 @@ import { CardComponent } from './card/card.component';
   imports: [
     CommonModule,
     FontAwesomeModule
-   ],
+  ],
   exports: [MainComponent]
 })
 export class MainModule { }

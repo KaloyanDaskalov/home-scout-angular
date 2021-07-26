@@ -1,13 +1,3 @@
-// export class Advertisement {
-//     id?: string | null;
-//     title?: string;
-//     price?: number;
-//     imageUrl?: string;
-//     address?: string;
-//     type?: string;
-//     description?: string;
-// }
-
 export interface Advertisement {
     id?: string | null;
     title?: string | undefined;
@@ -17,3 +7,13 @@ export interface Advertisement {
     type?: string | undefined;
     description?: string | undefined;
 }
+
+// export class Advertisement {
+//     id?: string | null;
+//     title?: string;
+//     price?: number;
+//     imageUrl?: string;
+//     address?: string;
+//     type?: string;
+//     description?: string;
+// }
