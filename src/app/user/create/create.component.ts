@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { AdvertisementService } from '../../advertisement.service';
-import { Advertisement } from '../../interfaces/advertisement';
+import { Advertisement } from '../../shared/interfaces/advertisement';
 
 @Component({
   selector: 'app-create',

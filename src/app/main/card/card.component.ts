@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faHeart, faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-solid-svg-icons';
-import { Advertisement } from 'src/app/interfaces/advertisement';
+import { Advertisement } from 'src/app/shared/interfaces/advertisement';
 
 @Component({
   selector: 'app-card',

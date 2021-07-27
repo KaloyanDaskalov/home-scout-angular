@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdvertisementService } from '../advertisement.service';
-import { Advertisement } from '../interfaces/advertisement';
+import { Advertisement } from '../shared/interfaces/advertisement';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,36 +18,25 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      if(params.search) {
-        return this.retrieveQueryAdvertisements(params.search);
-      }
-      return this.retrieveAdvertisements();
+      this.retrieveAdvertisements(params.search);
     });
   }
-
-  retrieveAdvertisements(): void {
-    this.advertisementService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.key, ...c.payload.val() })
-        )
-      )
-    ).subscribe(data => {
-      this.advertisements = data;
-    });
-  }
-
-  retrieveQueryAdvertisements(query:string = ''): void {
+  
+  retrieveAdvertisements(query:string = ''): void {
     this.advertisementService.getAll().snapshotChanges()
     .pipe(
       map(changes =>
         changes.map(c =>
           ({ id: c.payload.key, ...c.payload.val() })
-        ).filter(x => x.title?.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
         )
+      )
     )
     .subscribe(data => {
-      this.advertisements = data;
+      if(query){
+        this.advertisements = data.filter(x => x.title?.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
+      } else {
+        this.advertisements = data;
+      }
     });
   }
 }

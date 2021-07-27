@@ -19,7 +19,7 @@ export class NavigationComponent {
     ) { }
 
   onSearch( inputEl: HTMLInputElement) {
-    this.router.navigate([''], {queryParams: {search: inputEl.value}})
+    this.router.navigate(['/advertisements'], {queryParams: {search: inputEl.value}});
   }
 
   onLogout() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Advertisement } from './interfaces/advertisement';
+import { Advertisement } from './shared/interfaces/advertisement';
 
 @Injectable({
   providedIn: 'root'
