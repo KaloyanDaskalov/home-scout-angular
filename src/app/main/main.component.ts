@@ -33,10 +33,9 @@ export class MainComponent implements OnInit {
     )
     .subscribe(data => {
       if(query){
-        this.advertisements = data.filter(x => x.title?.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
-      } else {
-        this.advertisements = data;
-      }
+        data = data.filter(x => x.title?.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
+      } 
+      this.advertisements = data;
     });
   }
 }

@@ -48,23 +48,23 @@
               <fa-icon [icon]="faUser" size="2x"></fa-icon>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
+              <li *ngIf="!isLogged">
                 <a class="dropdown-item" routerLink="/auth/login">Login</a>
               </li>
-              <li>
+              <li *ngIf="!isLogged">
                 <a class="dropdown-item" routerLink="/auth/register"
                   >Register</a
                 >
               </li>
-              <li>
+              <li *ngIf="isLogged">
                 <a class="dropdown-item" routerLink="/advertisement/create"
                   >Create</a
                 >
               </li>
-              <li>
+              <li *ngIf="isLogged">
                 <a class="dropdown-item" routerLink="/profile">Profile</a>
               </li>
-              <li class="dropdown-item">
+              <li class="dropdown-item" *ngIf="isLogged">
                 <button
                   class="btn btn-sm btn-outline-success"
                   (click)="onLogout()"

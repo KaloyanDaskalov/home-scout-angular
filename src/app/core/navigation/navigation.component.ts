@@ -13,10 +13,15 @@ export class NavigationComponent {
   faUser = faUser;
   faSort = faSort;
   
+  get isLogged(): boolean {
+    return this.authService.isLoggedIn;
+  } 
+
   constructor( 
     private router: Router,
     private authService: AuthService
     ) { }
+
 
   onSearch( inputEl: HTMLInputElement) {
     this.router.navigate(['/advertisements'], {queryParams: {search: inputEl.value}});
@@ -25,5 +30,5 @@ export class NavigationComponent {
   onLogout() {
     this.authService.SignOut();
   }
-
+  
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-// import { User } from "../interfaces/user";
+// import { User } from "../shared/interfaces/user";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,33 +13,32 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
-  ) {    
-    /* Saving user data in localstorage when 
-    logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
+    private router: Router
+  ) {
+    // Observable for current user
+    this.afAuth.onAuthStateChanged(user => {
         this.currentUser = user;
-        console.log('auth state', user);
-        
-      }
+        console.log('auth state');
     });
   }
   
   // Sign up with email/password
   SignUp(email: string, password: string) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((usr) => {
-        console.log('sign up', usr);
+      .then(() => {
+        console.log('sign up');
+        this.router.navigate(['advertisements']);
       }).catch((error) => {
-        window.alert(error.message)
+        console.log(error);
       })
   }
 
   // Sign in with email/password
   SignIn(email:string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((usr) => {
-        console.log('sign in', usr);
+      .then(() => {
+        console.log('sign in');
+        this.router.navigate(['advertisements']);
       }).catch((error) => {
         console.log(error);
       });
@@ -56,7 +56,7 @@ export class AuthService {
 
   // Sign out 
   SignOut() {
-    return this.afAuth.signOut().then();
+    return this.afAuth.signOut().then(console.log);
   }
 
   // Returns true when user is looged in and email is verified
