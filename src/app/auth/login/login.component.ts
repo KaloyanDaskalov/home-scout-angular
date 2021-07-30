@@ -10,7 +10,6 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
   @ViewChild('f') formData!: NgForm;
-  faUser = faUser;
   faEnvelope = faEnvelope;
   faLock = faLock;
 

@@ -13,11 +13,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
-
+//components
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,10 +28,10 @@ import { environment } from '../environments/environment';
     MainModule,
     AuthModule,
     UserModule,
-    NotFoundModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NotFoundModule
   ],
   providers: [],
   bootstrap: [AppComponent]

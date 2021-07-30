@@ -11,24 +11,6 @@
                 </p>
 
                 <form class="mx-1 mx-md-4" (ngSubmit)="onSubmit()" #f="ngForm">
-                  <!-- username -->
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <fa-icon class="fa-lg me-3 fa-fw" [icon]="faUser"></fa-icon>
-                    <div class="form-floating flex-fill mb-0">
-                      <input
-                        type="text"
-                        id="username"
-                        class="form-control"
-                        placeholder="Username"
-                        ngModel
-                        name="username"
-                        required
-                        minlength="3"
-                        maxlength="15"
-                      />
-                      <label class="form-label" for="username">Username</label>
-                    </div>
-                  </div>
                   <!-- email -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <fa-icon

@@ -5,11 +5,6 @@
   --custom-grey: #ebeced;
 }
 
-main {
-  background-color: var(--custom-grey);
-  padding: 3rem 0;
-}
-
 .custom-form {
   min-height: 100vh;
   background-color: var(--custom-grey);

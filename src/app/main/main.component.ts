@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  advertisements?: Advertisement[]; 
+  advertisements: Advertisement[] = []; 
 
   constructor(
     private advertisementService: AdvertisementService,

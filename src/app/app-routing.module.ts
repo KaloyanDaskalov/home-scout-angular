@@ -5,7 +5,7 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   {path:'advertisements', component: MainComponent },
-  {path:'', pathMatch: 'full', redirectTo: '/advertisements'},
+  {path:'', pathMatch: 'full', redirectTo: '/advertisements'}
 ];
 
 @NgModule({

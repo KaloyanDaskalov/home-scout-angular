@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { User } from "../shared/interfaces/user";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from '@angular/router';
 
@@ -23,10 +22,10 @@ export class AuthService {
   }
   
   // Sign up with email/password
-  SignUp(email: string, password: string) {
+  SignUp(email: string, password: string, displayName: string) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('sign up');
+      .then((usr) => {
+        usr.user?.updateProfile({displayName});
         this.router.navigate(['advertisements']);
       }).catch((error) => {
         console.log(error);
@@ -37,7 +36,6 @@ export class AuthService {
   SignIn(email:string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('sign in');
         this.router.navigate(['advertisements']);
       }).catch((error) => {
         console.log(error);
@@ -64,21 +62,4 @@ export class AuthService {
     return !!this.currentUser;
   }
 
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-
-  // SetUserData(user) {
-  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName,
-  //     photoURL: user.photoURL,
-  //     emailVerified: user.emailVerified
-  //   }
-  //   return userRef.set(userData, {
-  //     merge: true
-  //   })
-  // }
 }

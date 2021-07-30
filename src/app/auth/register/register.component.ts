@@ -21,10 +21,10 @@ export class RegisterComponent {
   }
 
   onSubmit () {
-    const {email = '', password = '', repeatPassword = ''} = this.formData.form.value;
+    const {username = '',email = '', password = '', repeatPassword = ''} = this.formData.form.value;
 
     if ( this.formData.valid && (password === repeatPassword)) {
-      this.authService.SignUp(email, password);
+      this.authService.SignUp(email, password, username);
     }
     }
 }

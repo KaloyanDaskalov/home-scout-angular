@@ -1,0 +1,7 @@
+main {
+  background-color: var(--custom-grey);
+}
+
+.loader {
+  position: relative;
+}
