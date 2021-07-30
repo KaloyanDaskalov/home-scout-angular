@@ -2,6 +2,6 @@ main {
   background-color: var(--custom-grey);
 }
 
-.loader {
+.with-loader {
   position: relative;
 }
