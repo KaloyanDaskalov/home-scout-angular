@@ -19,9 +19,9 @@ export class AdvertisementService {
     return this.advertisementRef;
   }
 
-  // getByQuery (query: string) {
-  //   return this.db.list(this.dbPath, ref => ref.orderByChild('title').equalTo(query));
-  // }
+  getByType (type: string): AngularFireList<Advertisement> {
+    return this.db.list(this.dbPath, ref => ref.orderByChild('type').equalTo(type));
+  }
 
   create(advertisement: Advertisement): any {
     return this.advertisementRef.push(advertisement);

@@ -1,7 +1,3 @@
 main {
   background-color: var(--custom-grey);
 }
-
-.with-loader {
-  position: relative;
-}

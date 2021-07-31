@@ -6,14 +6,8 @@ export interface Advertisement {
     address?: string | undefined;
     type?: string | undefined;
     description?: string | undefined;
+    author?: string | undefined;
+    authorId?: string | undefined;
 }
 
-// export class Advertisement {
-//     id?: string | null;
-//     title?: string;
-//     price?: number;
-//     imageUrl?: string;
-//     address?: string;
-//     type?: string;
-//     description?: string;
-// }
+

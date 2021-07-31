@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faHeart, faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-solid-svg-icons';
 import { Advertisement } from 'src/app/shared/interfaces/advertisement';
 
@@ -7,7 +7,7 @@ import { Advertisement } from 'src/app/shared/interfaces/advertisement';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() advertisementCard!: Advertisement;
   faHeart = faHeart;
   faMapMarkerAlt = faMapMarkerAlt;
@@ -17,9 +17,6 @@ export class CardComponent implements OnInit {
   showDetails: boolean = false;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   onClick() {
     this.showDetails = !this.showDetails;

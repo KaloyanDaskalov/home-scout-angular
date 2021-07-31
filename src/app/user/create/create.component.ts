@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/auth/auth.service';
 import { AdvertisementService } from '../../advertisement.service';
 import { Advertisement } from '../../shared/interfaces/advertisement';
 
@@ -21,7 +22,14 @@ export class CreateComponent implements OnInit {
   faMap = faMap;
   faInfoCircle = faInfoCircle;
 
-  constructor(private advertisementService: AdvertisementService) { }
+  get currentUser (): object | null {
+    return this.authService.getCurrentUser;
+  }
+
+  constructor(
+    private advertisementService: AdvertisementService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this.formData = new FormGroup({
@@ -45,7 +53,10 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit () {
-    this.data = this.formData.value;
+    if (this.formData.invalid || !this.currentUser) { return; }
+
+    this.data = { ...this.formData.value, ...this.currentUser };
+
     this.advertisementService.create(this.data).then(() => {
       console.log('Created new item successfully!', this.data);
       //TODO clear form and create global info/error 

@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="">
+      <a class="navbar-brand" routerLink="/advertisements">
         <img class="custom-logo" src="../../assets/hs.svg" alt="Logo" />
       </a>
       <button
@@ -26,13 +26,40 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <fa-icon [icon]="faSort" size="2x"></fa-icon>
+              <fa-icon [icon]="faFilter" size="2x"></fa-icon>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">House/Sell</a></li>
-              <li><a class="dropdown-item" href="#">Flat/Buy</a></li>
               <li>
-                <a class="dropdown-item" href="#">Magazine/Rent</a>
+                <a
+                  class="dropdown-item"
+                  routerLink="/advertisements"
+                  [queryParams]="{ type: 'house' }"
+                  >House</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/advertisements"
+                  [queryParams]="{ type: 'flat' }"
+                  >Flat</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/advertisements"
+                  [queryParams]="{ type: 'office' }"
+                  >Office</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/advertisements"
+                  [queryParams]="{ type: 'land' }"
+                  >Land</a
+                >
               </li>
             </ul>
           </li>
@@ -46,6 +73,7 @@
               aria-expanded="false"
             >
               <fa-icon [icon]="faUser" size="2x"></fa-icon>
+              {{ user }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li *ngIf="!isLogged">

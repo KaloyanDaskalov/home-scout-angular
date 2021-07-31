@@ -57,9 +57,21 @@ export class AuthService {
     return this.afAuth.signOut().then(console.log);
   }
 
-  // Returns true when user is looged in and email is verified
+  // Returns true when user is looged
   get isLoggedIn(): boolean {
     return !!this.currentUser;
+  }
+
+  // Returns displayName
+  get getUser(): string {
+    return this.currentUser?.displayName || '';
+  }
+
+  // Returns current user
+  get getCurrentUser(): object | null {
+    return this.currentUser ? 
+    { author: this.currentUser?.email, authorId: this.currentUser?.uid }
+    : null;
   }
 
 }

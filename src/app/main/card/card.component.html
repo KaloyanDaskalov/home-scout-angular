@@ -19,6 +19,9 @@
     <p class="card-text" *ngIf="showDetails">
       {{ advertisementCard.description }}
     </p>
+    <p class="card-title" *ngIf="showDetails">
+      Author: <strong>{{ advertisementCard.author }}</strong>
+    </p>
     <div class="d-flex justify-content-between">
       <button
         type="button"

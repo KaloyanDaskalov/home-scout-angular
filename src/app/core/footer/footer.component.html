@@ -57,13 +57,36 @@
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">Filters</h6>
           <p>
-            <a href="#!" class="text-reset">For Sale</a>
+            <a
+              class="text-reset"
+              routerLink="/advertisements"
+              [queryParams]="{ type: 'house' }"
+              >House</a
+            >
           </p>
           <p>
-            <a href="#!" class="text-reset">For Rent</a>
+            <a
+              class="text-reset"
+              routerLink="/advertisements"
+              [queryParams]="{ type: 'flat' }"
+              >Flat</a
+            >
           </p>
           <p>
-            <a href="#!" class="text-reset">Buys</a>
+            <a
+              class="text-reset"
+              routerLink="/advertisements"
+              [queryParams]="{ type: 'office' }"
+              >Office</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-reset"
+              routerLink="/advertisements"
+              [queryParams]="{ type: 'land' }"
+              >Land</a
+            >
           </p>
         </div>
         <!-- Grid column -->
@@ -90,7 +113,7 @@
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
     © 2021 Copyright:
-    <a class="text-reset fw-bold" href="#">Home Scout</a>
+    <a class="text-reset fw-bold" routerLink="/advertisements">Home Scout</a>
   </div>
   <!-- Copyright -->
 </footer>
