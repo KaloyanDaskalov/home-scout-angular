@@ -1,16 +1,122 @@
-<!-- TODO Profile Page -->
-<div class="d-flex justify-content-center">
-  <h4>Bhaumik Patel</h4>
-  <small
-    ><cite title="San Francisco, USA"
-      >San Francisco, USA <i class="glyphicon glyphicon-map-marker"> </i></cite
-  ></small>
-  <p>
-    <i class="glyphicon glyphicon-envelope"></i>email@example.com
-    <br />
-    <i class="glyphicon glyphicon-globe"></i
-    ><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-    <br />
-    <i class="glyphicon glyphicon-gift"></i>June 02, 1988
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 img">
+      <img
+        src="../../../assets/default-profile-img.png"
+        alt="profile image"
+        class="img-rounded"
+      />
+    </div>
+    <div class="col-md-6 details">
+      <blockquote>
+        <h5>{{ currentUser?.displayName }}</h5>
+        <p>
+          {{ currentUser?.email }} <br />
+          {{ currentUser?.phoneNumber }}
+        </p>
+      </blockquote>
+      <hr />
+      <div class="container">
+        <h5>
+          User Settings
+          <br />
+          <small class="text-muted">Email, Password, Phone...</small>
+        </h5>
+        <div class="profile-btn">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onOptionChange('email')"
+          >
+            Email
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onOptionChange('password')"
+          >
+            Password
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onOptionChange('delete')"
+          >
+            Delete
+          </button>
+        </div>
+        <!-- dynamic inputs -->
+        <ng-container [ngSwitch]="option">
+          <!-- email -->
+          <div class="form-floating mb-3" *ngSwitchCase="'email'">
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="name@example.com"
+              name="email"
+              [(ngModel)]="form.email"
+              #email="ngModel"
+              required
+              email
+            />
+            <label for="email">Email address</label>
+            <br />
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              [disabled]="!email.valid"
+              (click)="onEmailChange()"
+            >
+              Change
+            </button>
+          </div>
+          <!-- password -->
+          <div class="form-floating mb-3" *ngSwitchCase="'password'">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="********"
+              name="password"
+              [(ngModel)]="form.password"
+              #password="ngModel"
+              required
+              minlength="6"
+              maxlength="15"
+            />
+            <label for="password">Password</label>
+            <br />
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              [disabled]="!password.valid"
+              (click)="onPasswordChange()"
+            >
+              Change
+            </button>
+          </div>
+          <!-- delete -->
+          <div *ngSwitchCase="'delete'">
+            <p class="alert-danger h3 mb-3 p-3">Are you sure ?</p>
+            <button
+              type="button"
+              class="btn btn-primary mr-3"
+              (click)="onCancelDelete()"
+            >
+              Cancel
+            </button>
+            <span class="delimiter">|</span>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onConfirmDelete()"
+            >
+              Confirm
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>

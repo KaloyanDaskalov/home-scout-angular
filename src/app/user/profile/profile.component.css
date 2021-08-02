@@ -1,0 +1,30 @@
+.container {
+  padding: 5%;
+}
+.img-rounded {
+  display: block;
+  width: 100%;
+}
+.container .details {
+  border-left: 3px solid #ded4da;
+}
+.container .details p {
+  font-weight: bold;
+}
+
+.profile-btn {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.delimiter {
+  padding: 0 0.5rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .profile-btn {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

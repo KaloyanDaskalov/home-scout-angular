@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from '@angular/router';
+import { User } from '../shared/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +55,8 @@ export class AuthService {
 
   // Sign out 
   SignOut() {
-    return this.afAuth.signOut().then(console.log);
+    this.router.navigate(['/advertisements']);
+    return this.afAuth.signOut().then();
   }
 
   // Returns true when user is looged
@@ -68,10 +70,10 @@ export class AuthService {
   }
 
   // Returns current user
-  get getCurrentUser(): object | null {
+  get getCurrentUser(): User | null {
     return this.currentUser ? 
-    { author: this.currentUser?.email, authorId: this.currentUser?.uid }
+    this.currentUser
     : null;
   }
-
+  // { author: this.currentUser?.email, authorId: this.currentUser?.uid }
 }

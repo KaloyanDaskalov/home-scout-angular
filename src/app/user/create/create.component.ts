@@ -4,6 +4,7 @@ import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/
 import { AuthService } from 'src/app/auth/auth.service';
 import { AdvertisementService } from '../../advertisement.service';
 import { Advertisement } from '../../shared/interfaces/advertisement';
+import { User } from '../../shared/interfaces/user';
 
 @Component({
   selector: 'app-create',
@@ -22,7 +23,7 @@ export class CreateComponent implements OnInit {
   faMap = faMap;
   faInfoCircle = faInfoCircle;
 
-  get currentUser (): object | null {
+  get currentUser (): User | null {
     return this.authService.getCurrentUser;
   }
 
@@ -55,7 +56,7 @@ export class CreateComponent implements OnInit {
   onSubmit () {
     if (this.formData.invalid || !this.currentUser) { return; }
 
-    this.data = { ...this.formData.value, ...this.currentUser };
+    this.data = { ...this.formData.value, author: this.currentUser?.email, authorId: this.currentUser?.uid };
 
     this.advertisementService.create(this.data).then(() => {
       console.log('Created new item successfully!', this.data);
