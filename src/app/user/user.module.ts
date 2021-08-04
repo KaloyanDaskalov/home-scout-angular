@@ -6,12 +6,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CreateComponent } from './create/create.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MyAdvertisementsComponent } from './my-advertisements/my-advertisements.component';
+import { MyCardComponent } from './my-card/my-card.component';
 
 
 @NgModule({
   declarations: [
     CreateComponent,
-    ProfileComponent
+    ProfileComponent,
+    MyAdvertisementsComponent,
+    MyCardComponent
   ],
   imports: [
     CommonModule,

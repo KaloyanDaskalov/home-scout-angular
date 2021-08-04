@@ -52,7 +52,7 @@ export class MainComponent implements OnInit {
   retrieveAdvertisementsByType(type:string = ''): void {
       this.loaderService.isLoading.next(true);
 
-    this.advertisementService.getByType(type).snapshotChanges()
+    this.advertisementService.getByChild('type', type).snapshotChanges()
     .pipe(
       map(changes =>
         changes.map(c =>

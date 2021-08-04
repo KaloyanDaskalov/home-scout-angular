@@ -59,8 +59,8 @@ export class CreateComponent implements OnInit {
     this.data = { ...this.formData.value, author: this.currentUser?.email, authorId: this.currentUser?.uid };
 
     this.advertisementService.create(this.data).then(() => {
-      console.log('Created new item successfully!', this.data);
-      //TODO clear form and create global info/error 
+      console.log('Created new item successfully!');
+      //TODO clear form and create global info/error and clear form 
   })
   }
 }

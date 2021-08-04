@@ -19,8 +19,8 @@ export class AdvertisementService {
     return this.advertisementRef;
   }
 
-  getByType (type: string): AngularFireList<Advertisement> {
-    return this.db.list(this.dbPath, ref => ref.orderByChild('type').equalTo(type));
+  getByChild (child: string, type: string): AngularFireList<Advertisement> {
+    return this.db.list(this.dbPath, ref => ref.orderByChild(child).equalTo(type));
   }
 
   create(advertisement: Advertisement): any {
@@ -31,7 +31,7 @@ export class AdvertisementService {
     return this.advertisementRef.update(id, value);
   }
 
-  delete(id: string): Promise<void> {
+  delete(id: string ): Promise<void> {
     return this.advertisementRef.remove(id);
   }
 

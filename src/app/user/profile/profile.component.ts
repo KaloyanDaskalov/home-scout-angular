@@ -34,14 +34,14 @@ export class ProfileComponent {
   onEmailChange() {
     if (this.currentUser) {
       this.currentUser.updateEmail( this.form.email )
-        .then(_ => this.option='')
+        .then(_ => this.authService.SignOut());
     }
   }
 
   onPasswordChange() {
     if (this.currentUser) {
       this.currentUser.updatePassword(this.form.password)
-        .then(_ => this.option='')
+        .then(_ => this.authService.SignOut());
     }
   }
 

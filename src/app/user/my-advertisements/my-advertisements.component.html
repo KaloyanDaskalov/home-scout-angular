@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row" *ngIf="advertisements.length > 0; else noAdvertisements">
+    <div
+      class="col-sm-6 col-md-6 col-lg-4 mb-4"
+      *ngFor="let advertisement of advertisements"
+    >
+      <app-my-card [advertisementCard]="advertisement"></app-my-card>
+    </div>
+  </div>
+
+  <ng-template #noAdvertisements>
+    <div class="page-wrap d-flex flex-row align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 text-center">
+            <span class="display-1 d-block">No Advertisements found</span>
+            <br />
+            <a
+              routerLink="/advertisement/create"
+              class="btn btn-outline-success btn-lg"
+            >
+              Create
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -9,18 +9,15 @@
     </div>
     <div class="col-md-6 details">
       <blockquote>
-        <h5>{{ currentUser?.displayName }}</h5>
-        <p>
-          {{ currentUser?.email }} <br />
-          {{ currentUser?.phoneNumber }}
-        </p>
+        <h5>username: {{ currentUser?.displayName }}</h5>
+        <p>email: {{ currentUser?.email }}</p>
       </blockquote>
       <hr />
       <div class="container">
         <h5>
           User Settings
           <br />
-          <small class="text-muted">Email, Password, Phone...</small>
+          <small class="text-muted">Email, Password...</small>
         </h5>
         <div class="profile-btn">
           <button

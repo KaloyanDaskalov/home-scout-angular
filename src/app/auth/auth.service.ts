@@ -9,7 +9,7 @@ import { User } from '../shared/interfaces/user';
 
 export class AuthService {
 
-  currentUser: any = null; // Save logged in user data
+  private currentUser: any = null; // Save logged in user data
 
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
