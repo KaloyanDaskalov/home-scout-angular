@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-solid-svg-icons';
 import { AdvertisementService } from 'src/app/advertisement.service';
 import { Advertisement } from 'src/app/shared/interfaces/advertisement';
@@ -22,11 +23,8 @@ export class MyCardComponent {
   ) { }
 
   onDelete (id: string | null | undefined) {
-    console.log(id);
-    //TODO DELETE
-      // this.loaderService.isLoading.next(true);
-      // this.showModal = false;
-      // this.advertisementService.delete(id).then();
-      // this.loaderService.isLoading.next(false);
+      this.loaderService.isLoading.next(true);
+      this.advertisementService.delete(id as string).then();
+      this.loaderService.isLoading.next(false);
   }
 }

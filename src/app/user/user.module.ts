@@ -8,6 +8,7 @@ import { CreateComponent } from './create/create.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyAdvertisementsComponent } from './my-advertisements/my-advertisements.component';
 import { MyCardComponent } from './my-card/my-card.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MyCardComponent } from './my-card/my-card.component';
     CreateComponent,
     ProfileComponent,
     MyAdvertisementsComponent,
-    MyCardComponent
+    MyCardComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
