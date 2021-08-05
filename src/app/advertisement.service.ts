@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Advertisement } from './shared/interfaces/advertisement';
 
 @Injectable({
@@ -21,6 +21,11 @@ export class AdvertisementService {
 
   getByChild (child: string, type: string): AngularFireList<Advertisement> {
     return this.db.list(this.dbPath, ref => ref.orderByChild(child).equalTo(type));
+  }
+
+  getOne (id: string): AngularFireObject<Advertisement> {
+    console.log('getOne', id);
+    return this.db.object(`${this.dbPath}/${id}`);
   }
 
   create(advertisement: Advertisement): any {

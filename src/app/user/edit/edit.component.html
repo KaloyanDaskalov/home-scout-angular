@@ -1,1 +1,154 @@
-<p>edit works!</p>
+<section class="custom-form">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  Edit
+                </p>
+
+                <form
+                  class="mx-1 mx-md-4"
+                  [formGroup]="formData"
+                  (ngSubmit)="onSubmit()"
+                >
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon class="fa-lg me-3 fa-fw" [icon]="faHome"></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="text"
+                        id="title"
+                        class="form-control"
+                        placeholder="Title"
+                        formControlName="title"
+                        name="title"
+                        value=""
+                      />
+                      <label class="form-label" for="title">Title</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon
+                      class="fa-lg me-3 fa-fw"
+                      [icon]="faDollarSign"
+                    ></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="number"
+                        id="price"
+                        class="form-control"
+                        placeholder="Price"
+                        formControlName="price"
+                        name="price"
+                      />
+                      <label class="form-label" for="price">Price</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon
+                      class="fa-lg me-3 fa-fw"
+                      [icon]="faImage"
+                    ></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="text"
+                        id="imageUrl"
+                        class="form-control"
+                        placeholder="Image Url"
+                        formControlName="imageUrl"
+                        name="imageUrl"
+                      />
+                      <label class="form-label" for="imageUrl">Image URL</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon class="fa-lg me-3 fa-fw" [icon]="faMap"></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="text"
+                        id="address"
+                        class="form-control"
+                        placeholder="Address"
+                        formControlName="address"
+                        name="address"
+                      />
+                      <label class="form-label" for="address">Address </label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon class="fa-lg me-3 fa-fw" [icon]="faHome"></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <select
+                        id="type"
+                        class="form-select"
+                        aria-label="Select-type"
+                        formControlName="type"
+                        name="type"
+                      >
+                        <option *ngFor="let type of types" [value]="type">
+                          {{ type | titlecase }}
+                        </option>
+                      </select>
+                      <label for="type" class="label">Type</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <fa-icon
+                      class="fa-lg me-3 fa-fw"
+                      [icon]="faInfoCircle"
+                    ></fa-icon>
+                    <div class="form-floating flex-fill mb-0">
+                      <textarea
+                        class="form-control"
+                        id="description"
+                        placeholder="Description"
+                        style="height: 7rem"
+                        formControlName="description"
+                        name="description"
+                      ></textarea>
+                      <label for="description" class="floatingTextarea"
+                        >Description</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg"
+                      [disabled]="!formData.valid"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="
+                  col-lg-6 col-xl-7
+                  d-none d-lg-flex
+                  align-items-center
+                  order-1 order-lg-2
+                "
+              >
+                <img
+                  src="../../assets/hs.svg"
+                  class="img-fluid"
+                  alt="Site Logo"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
