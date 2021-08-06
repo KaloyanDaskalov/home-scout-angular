@@ -60,7 +60,7 @@ export class CreateComponent implements OnInit {
 
     this.advertisementService.create(this.data).then(() => {
       console.log('Created new item successfully!');
-      //TODO clear form and create global info/error and clear form 
-  })
+      //TODO clear form and create global info/error, clear form, trim values, redirect to my-advertisements
+  });
   }
 }

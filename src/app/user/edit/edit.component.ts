@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { map } from 'rxjs/operators';
 import { AdvertisementService } from 'src/app/advertisement.service';
@@ -20,16 +20,18 @@ export class EditComponent implements OnInit {
   faImage = faImage;
   faMap = faMap;
   faInfoCircle = faInfoCircle;
+  id!: string; 
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private advertisementService: AdvertisementService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private loaderService: LoaderService
   ) { }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id || '';
+    this.id = this.activatedRoute.snapshot.params.id || '';
 
     this.formData =  this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
@@ -40,7 +42,7 @@ export class EditComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(500)]]
     });
 
-    this.retrieveMyAdvertisement(id);
+    this.retrieveMyAdvertisement(this.id);
   }
   
     retrieveMyAdvertisement(id: string): void {
@@ -59,8 +61,9 @@ export class EditComponent implements OnInit {
   
     onSubmit () {
       if (this.formData.invalid) { return; }
-      //Patch updated advertisement
-      console.log('Created new item successfully!');
+      const {title, price, imageUrl, address, type, description} = this.formData.value;
+      // TODO trim values
+      this.advertisementService.getOne(this.id).update({title, price, imageUrl, address, type, description}).then(_ => this.router.navigate(['/advertisement/my-advertisements']));
     }
 
   checkImage(control: FormControl): {[key:string]: boolean} | null {

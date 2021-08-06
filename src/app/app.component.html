@@ -1,6 +1,11 @@
 <main>
   <app-navigation></app-navigation>
   <app-loader [hidden]="!loading"></app-loader>
+  <app-global-messages
+    *ngIf="show"
+    [inputMessage]="message"
+    [inputType]="type"
+  ></app-global-messages>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </main>

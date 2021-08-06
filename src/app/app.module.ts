@@ -15,11 +15,13 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 //components
 import { LoaderComponent } from './shared/loader/loader.component';
+import { GlobalMessagesComponent } from './shared/global-messages/global-messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent
+    LoaderComponent,
+    GlobalMessagesComponent
   ],
   imports: [
     BrowserModule,

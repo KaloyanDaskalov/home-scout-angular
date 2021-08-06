@@ -24,7 +24,6 @@ export class AdvertisementService {
   }
 
   getOne (id: string): AngularFireObject<Advertisement> {
-    console.log('getOne', id);
     return this.db.object(`${this.dbPath}/${id}`);
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from '@angular/router';
+import { GlobalMessagesService } from '../shared/global-messages/global-messages.service';
 import { User } from '../shared/interfaces/user';
 
 @Injectable({
@@ -13,6 +14,7 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
+    private globalMessages: GlobalMessagesService,
     private router: Router
   ) {
     // Observable for current user
@@ -56,7 +58,7 @@ export class AuthService {
   // Sign out 
   SignOut() {
     this.router.navigate(['/advertisements']);
-    return this.afAuth.signOut().then();
+    return this.afAuth.signOut().then(_ => this.globalMessages.isMessage.next({show: true, message: 'Logged out', type: 'bg-success'}));
   }
 
   // Returns true when user is looged
@@ -75,5 +77,4 @@ export class AuthService {
     this.currentUser
     : null;
   }
-  // { author: this.currentUser?.email, authorId: this.currentUser?.uid }
 }
