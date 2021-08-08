@@ -1,0 +1,12 @@
+.custom-toast {
+  position: fixed;
+  z-index: 11;
+  top: 1rem;
+  right: 1rem;
+  transition: all 0.4s linear;
+  transform: translateX(120%);
+}
+
+.custom-show {
+  transform: translateX(0);
+}

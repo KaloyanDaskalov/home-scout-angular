@@ -1,27 +1,26 @@
 import { Component, ViewChild } from '@angular/core';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class LoginComponent {
+export class ForgotPasswordComponent {
+
   @ViewChild('f') formData!: NgForm;
   faEnvelope = faEnvelope;
-  faLock = faLock;
 
   constructor(
     private authService: AuthService
   ) { }
 
   onSubmit() {
-    const {email = '', password = ''} = this.formData.form.value;
-
+  
     if ( this.formData.valid ) {
-      this.authService.SignIn(email, password);
+      this.authService.ForgotPassword(this.formData.form.value.email);
     }  
   }
 }

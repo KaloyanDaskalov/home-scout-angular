@@ -8,6 +8,7 @@ import { GlobalMessagesService } from './global-messages.service';
 })
 export class GlobalMessagesComponent {
   
+  @Input() ifShow!:boolean;
   @Input() inputMessage!:string;
   @Input() inputType!:string;
 
@@ -16,7 +17,7 @@ export class GlobalMessagesComponent {
   ) { }
 
   onClose () {
-    this.globalMessages.isMessage.next({show: false, message: '', type: ''})
+    this.globalMessages.isMessage.next({ message: '', type: ''})
   }
 
 }

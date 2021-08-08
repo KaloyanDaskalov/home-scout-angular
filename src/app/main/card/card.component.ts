@@ -22,4 +22,8 @@ export class CardComponent {
     this.showDetails = !this.showDetails;
     this.btnDetails = this.showDetails ? 'Show Less' : 'Read More';
   }
+
+  onFavorites (cardId: any) {
+    console.log(cardId);
+  }
 }

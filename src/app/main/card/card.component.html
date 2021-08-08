@@ -30,9 +30,13 @@
       >
         {{ btnDetails }}
       </button>
-      <a href="" class="btn btn-outline-danger btn-sm">
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm"
+        (click)="onFavorites(advertisementCard.id)"
+      >
         <fa-icon [icon]="faHeart"></fa-icon>
-      </a>
+      </button>
     </div>
   </div>
 </div>

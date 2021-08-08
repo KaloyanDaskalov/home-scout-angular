@@ -2,7 +2,7 @@
   <app-navigation></app-navigation>
   <app-loader [hidden]="!loading"></app-loader>
   <app-global-messages
-    *ngIf="show"
+    [ifShow]="show"
     [inputMessage]="message"
     [inputType]="type"
   ></app-global-messages>

@@ -20,7 +20,9 @@ export class AuthService {
     // Observable for current user
     this.afAuth.onAuthStateChanged(user => {
         this.currentUser = user;
-        console.log('auth state');
+        if (user) {
+          this.globalMessages.isMessage.next({message: 'Welcome ' + (user?.displayName as string), type: 'bg-success'});
+        }
     });
   }
   
@@ -29,9 +31,9 @@ export class AuthService {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((usr) => {
         usr.user?.updateProfile({displayName});
-        this.router.navigate(['advertisements']);
+        this.router.navigate(['/advertisements']);
       }).catch((error) => {
-        console.log(error);
+        this.globalMessages.isMessage.next({message: error?.message, type: 'bg-danger'});
       })
   }
 
@@ -39,9 +41,9 @@ export class AuthService {
   SignIn(email:string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.router.navigate(['advertisements']);
+        this.router.navigate(['/advertisements']);
       }).catch((error) => {
-        console.log(error);
+        this.globalMessages.isMessage.next({message: error?.message, type: 'bg-danger'});
       });
   }
 
@@ -49,16 +51,16 @@ export class AuthService {
   ForgotPassword(passwordResetEmail: string) {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-      console.log('Password reset email sent, check your inbox.');
+      this.globalMessages.isMessage.next({message: 'Check your email', type: 'bg-success'});
     }).catch((error) => {
-      console.log(error);
+      this.globalMessages.isMessage.next({message: error?.message, type: 'bg-danger'});
     })
   }
 
   // Sign out 
   SignOut() {
     this.router.navigate(['/advertisements']);
-    return this.afAuth.signOut().then(_ => this.globalMessages.isMessage.next({show: true, message: 'Logged out', type: 'bg-success'}));
+    return this.afAuth.signOut().then(_ => this.globalMessages.isMessage.next({message: 'Logged out', type: 'bg-success'}));
   }
 
   // Returns true when user is looged

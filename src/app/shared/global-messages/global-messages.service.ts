@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 export class GlobalMessagesService {
 
   public isMessage = new BehaviorSubject({
-    show: false,
     type: '',
     message: ''
   });

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faHome,faDollarSign, faImage, faMap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/auth/auth.service';
+import { GlobalMessagesService } from 'src/app/shared/global-messages/global-messages.service';
 import { AdvertisementService } from '../../advertisement.service';
 import { Advertisement } from '../../shared/interfaces/advertisement';
 import { User } from '../../shared/interfaces/user';
@@ -29,7 +31,8 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private advertisementService: AdvertisementService,
-    private authService: AuthService
+    private authService: AuthService,
+    private globalMessages :GlobalMessagesService
     ) { }
 
   ngOnInit(): void {
@@ -59,8 +62,8 @@ export class CreateComponent implements OnInit {
     this.data = { ...this.formData.value, author: this.currentUser?.email, authorId: this.currentUser?.uid };
 
     this.advertisementService.create(this.data).then(() => {
-      console.log('Created new item successfully!');
-      //TODO clear form and create global info/error, clear form, trim values, redirect to my-advertisements
+      this.formData.reset();
+      this.globalMessages.isMessage.next({message: 'New advertisement created', type: 'bg-success'})
   });
   }
 }
