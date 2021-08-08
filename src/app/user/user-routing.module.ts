@@ -6,6 +6,7 @@ import { CreateComponent } from './create/create.component';
 import { MyAdvertisementsComponent } from './my-advertisements/my-advertisements.component';
 import { EditComponent } from './edit/edit.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     {path:'', redirectTo: '/advertisements', pathMatch: 'full'},
     {path:'create', canActivate:[AuthGuard], component: CreateComponent},
     {path:'edit/:id', canActivate:[AuthGuard], component: EditComponent},
-    {path:'my-advertisements', canActivate:[AuthGuard], component: MyAdvertisementsComponent}
+    {path:'my-advertisements', canActivate:[AuthGuard], component: MyAdvertisementsComponent},
+    {path:'my-favorites', canActivate:[AuthGuard], component: MyFavoritesComponent}
   ]},
   {path:'profile', canActivate:[AuthGuard], component: ProfileComponent}
 ];

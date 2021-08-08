@@ -97,6 +97,13 @@
                 >
               </li>
               <li *ngIf="isLogged">
+                <a
+                  class="dropdown-item"
+                  routerLink="/advertisement/my-favorites"
+                  >My Favorites</a
+                >
+              </li>
+              <li *ngIf="isLogged">
                 <a class="dropdown-item" routerLink="/profile">Profile</a>
               </li>
               <li class="dropdown-item" *ngIf="isLogged">

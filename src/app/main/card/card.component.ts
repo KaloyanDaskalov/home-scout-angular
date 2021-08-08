@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faHeart, faMapMarkerAlt, faEuroSign, faHome } from '@fortawesome/free-solid-svg-icons';
 import { Advertisement } from 'src/app/shared/interfaces/advertisement';
 
@@ -8,7 +8,10 @@ import { Advertisement } from 'src/app/shared/interfaces/advertisement';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  
   @Input() advertisementCard!: Advertisement;
+  @Output() addToFavorites = new EventEmitter();
+
   faHeart = faHeart;
   faMapMarkerAlt = faMapMarkerAlt;
   faEuroSign = faEuroSign;
@@ -16,7 +19,7 @@ export class CardComponent {
   btnDetails: string = 'Read More';
   showDetails: boolean = false;
 
-  constructor() { }
+  constructor( ) { }
 
   onClick() {
     this.showDetails = !this.showDetails;
@@ -24,6 +27,6 @@ export class CardComponent {
   }
 
   onFavorites (cardId: any) {
-    console.log(cardId);
+    this.addToFavorites.emit(cardId);
   }
 }

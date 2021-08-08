@@ -4,7 +4,11 @@
       class="col-sm-6 col-md-6 col-lg-4 mb-4"
       *ngFor="let advertisement of advertisements"
     >
-      <app-card [advertisementCard]="advertisement"></app-card>
+      <app-card
+        [advertisementCard]="advertisement"
+        (addToFavorites)="onFavoritesEmit($event)"
+      >
+      </app-card>
     </div>
   </div>
 

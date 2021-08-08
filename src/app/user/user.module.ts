@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyAdvertisementsComponent } from './my-advertisements/my-advertisements.component';
 import { MyCardComponent } from './my-card/my-card.component';
 import { EditComponent } from './edit/edit.component';
+import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditComponent } from './edit/edit.component';
     ProfileComponent,
     MyAdvertisementsComponent,
     MyCardComponent,
-    EditComponent
+    EditComponent,
+    MyFavoritesComponent
   ],
   imports: [
     CommonModule,

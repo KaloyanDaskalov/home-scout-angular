@@ -8,6 +8,7 @@ export interface Advertisement {
     description?: string | undefined;
     author?: string | undefined;
     authorId?: string | undefined;
+    favorites?: {[key: string]: boolean } | undefined;
 }
 
 
