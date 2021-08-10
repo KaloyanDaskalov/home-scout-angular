@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject, QueryFn } from '@angular/fire/database';
 import { Advertisement } from './shared/interfaces/advertisement';
 
 @Injectable({
@@ -25,6 +25,10 @@ export class AdvertisementService {
 
   getOne (id: string): AngularFireObject<Advertisement> {
     return this.db.object(`${this.dbPath}/${id}`);
+  }
+
+  onFavorite (id: string): AngularFireList<any> {
+    return this.db.list(`${this.dbPath}/${id}`)
   }
 
   create(advertisement: Advertisement): any {

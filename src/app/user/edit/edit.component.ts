@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { AdvertisementService } from 'src/app/advertisement.service';
 import { LoaderService } from 'src/app/shared/loader/loader.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { GlobalMessagesService } from 'src/app/shared/global-messages/global-messages.service';
 
 @Component({
   selector: 'app-edit',
@@ -27,7 +28,8 @@ export class EditComponent implements OnInit {
     private advertisementService: AdvertisementService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private globalMessages: GlobalMessagesService
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +65,12 @@ export class EditComponent implements OnInit {
       if (this.formData.invalid) { return; }
       const {title, price, imageUrl, address, type, description} = this.formData.value;
       // TODO trim values
-      this.advertisementService.getOne(this.id).update({title, price, imageUrl, address, type, description}).then(_ => this.router.navigate(['/advertisement/my-advertisements']));
+      this.advertisementService.getOne(this.id).update({title, price, imageUrl, address, type, description})
+      .then(() =>{
+        this.globalMessages.isMessage.next({message: title + ' was updated', type: 'bg-success'});
+        this.router.navigate(['/advertisement/my-advertisements']);
+      })
+      .catch(err => this.globalMessages.isMessage.next({message: err.message, type: 'bg-danger'}));
     }
 
   checkImage(control: FormControl): {[key:string]: boolean} | null {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 import { AdvertisementService } from '../advertisement.service';
 import { Advertisement } from '../shared/interfaces/advertisement';
@@ -82,35 +82,39 @@ export class MainComponent implements OnInit {
       this.router.navigate(['/auth/login']);
       return; 
     }
-
-
-    this.advertisementService.getOne(id).snapshotChanges().subscribe( advertisement => {
-      const currentAdvertisement = advertisement.payload.val();
-      const uid = this.currentUser?.uid as string;
+    
+    this.advertisementService.getOne(id).valueChanges()
+    .pipe(take(1))
+    .subscribe(adv => {
       
+      const currentAdvertisement = adv;
+      const uid = this.currentUser?.uid as string;
+
       if ( currentAdvertisement !== null) {
 
         if(currentAdvertisement?.authorId === uid) {
-          return this.globalMessages.isMessage.next({message: 'You can\'t perform this action on your   advertisement', type: 'bg-danger'});
-        }
+          
+          this.globalMessages.isMessage.next({message: 'You can\'t perform this action on your   advertisement', type: 'bg-danger'});
 
-        if(currentAdvertisement?.favorites === undefined) {
+        } else if(currentAdvertisement?.favorites === undefined) {
+          
           currentAdvertisement.favorites = {[uid]: true}
           this.advertisementService.getOne(id).update(currentAdvertisement).then(()=> this.globalMessages.isMessage.next({message: 'Added to favorites', type: 'bg-success'}));
-          return;
-        }
 
-        if(currentAdvertisement?.favorites[uid] === undefined) {
+        } else if(currentAdvertisement?.favorites[uid] === undefined) {
+
           currentAdvertisement.favorites[uid] = true;
           this.advertisementService.getOne(id).update(currentAdvertisement).then(() => this.globalMessages.isMessage.next({message: 'Added to favorites', type: 'bg-success'}));
-          return;
-        }
-
-        if(currentAdvertisement?.favorites[uid] !== undefined) {
-          return this.globalMessages.isMessage.next({message: 'It\'s already added', type: 'bg-danger'});
+        } else if(currentAdvertisement?.favorites[uid] !== undefined) {
+          if(Object.keys(currentAdvertisement.favorites).length === 1 ) {
+            delete currentAdvertisement?.favorites;
+          }else {
+            delete currentAdvertisement?.favorites[uid];
+          }
+          this.advertisementService.getOne(id).set(currentAdvertisement).then(() => this.globalMessages.isMessage.next({message: 'Removed from favorites', type: 'bg-warning'}));
         }
       }
-      
-    });
+      });
+    
   }
 }
