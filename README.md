@@ -4,12 +4,40 @@
 
 This is a demo project app for real estate advertisements. Build with Angular, Bootstrap 5 for UI/UX and Firebase as backend. The project consists of a main page with all the advertisements, authtentification and user area.
 
-Features include:
+Frameworks and dependencies include:
 
 - Angular
 - Bootstrap 5
 - Angular-fire
 - angular-fontawesome
+
+<h3>Project schema</h3>
+
+<ul>
+    <li>Main page with advertisements</li>
+    <li>Navigation with quick filters and search box</li>
+    <li>Footer with contacts, social medea links and quick filters</li>
+    <li>User authentication
+        <ul>
+            <li>Register</li>
+            <li>Login</li>
+            <li>Reset password</li>
+        </ul>
+    </li>
+    <li>Authenticated users area
+          <ul>
+            <li>My favorites</li>
+            <li>My advertisements</li>
+            <li>Profile page with user settings
+                <ul>
+                    <li>Change email</li>
+                    <li>Change password</li>
+                    <li>Delete account</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
 
 [See it in action](https://angular-boilerplate.herokuapp.com/)
 
@@ -17,27 +45,17 @@ Features include:
 
 Get the repo
 
-    $ git clone https://github.com/dickeyxxx/angular-boilerplate
-    $ cd angular-boilerplate
+    $ gh repo clone KaloyanDaskalov/home-scout-angular hs-project
+    $ cd hs-project
 
 Install dependencies
 
     $ npm install -g gulp karma-cli protractor
     $ npm install
 
-Install protractor dependencies (chromedriver)
-
-    $ ./node_modules/.bin/webdriver-manager update
-
 Run the test suite
 
     $ npm test
-
-Alternatively run just one of the test components
-
-    $ jshint .
-    $ karma start
-    $ protractor
 
 ## Development server
 
@@ -54,10 +72,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
