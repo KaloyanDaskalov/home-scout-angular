@@ -6,7 +6,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //component modules
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundModule } from './not-found/not-found.module';
 //firebase
@@ -32,7 +31,6 @@ import { GlobalMessagesComponent } from './shared/global-messages/global-message
     FontAwesomeModule,
     CoreModule,
     AuthModule,
-    UserModule,
     SharedModule,
     NotFoundModule,
     AngularFireModule.initializeApp(environment.firebase),

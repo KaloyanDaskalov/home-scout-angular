@@ -10,14 +10,14 @@ import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
 
 
 const routes: Routes = [
-  {path:'advertisement', children: [
+  {path:'', children: [
     {path:'', redirectTo: '/advertisements', pathMatch: 'full'},
     {path:'create', canActivate:[AuthGuard], component: CreateComponent},
     {path:'edit/:id', canActivate:[AuthGuard], component: EditComponent},
     {path:'my-advertisements', canActivate:[AuthGuard], component: MyAdvertisementsComponent},
-    {path:'my-favorites', canActivate:[AuthGuard], component: MyFavoritesComponent}
-  ]},
-  {path:'profile', canActivate:[AuthGuard], component: ProfileComponent}
+    {path:'my-favorites', canActivate:[AuthGuard], component: MyFavoritesComponent},
+    {path:'my-profile', canActivate:[AuthGuard], component: ProfileComponent}
+  ]}
 ];
 
 @NgModule({

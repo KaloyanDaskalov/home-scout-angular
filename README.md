@@ -1,6 +1,43 @@
-# HomeScout
+# Home Scout
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+<h4>powered by angular</h4>
+
+This is a demo project app for real estate advertisements. Build with Angular, Bootstrap 5 for UI/UX and Firebase as backend. The project consists of a main page with all the advertisements, authtentification and user area.
+
+Features include:
+
+- Angular
+- Bootstrap 5
+- Angular-fire
+- angular-fontawesome
+
+[See it in action](https://angular-boilerplate.herokuapp.com/)
+
+# Running Locally
+
+Get the repo
+
+    $ git clone https://github.com/dickeyxxx/angular-boilerplate
+    $ cd angular-boilerplate
+
+Install dependencies
+
+    $ npm install -g gulp karma-cli protractor
+    $ npm install
+
+Install protractor dependencies (chromedriver)
+
+    $ ./node_modules/.bin/webdriver-manager update
+
+Run the test suite
+
+    $ npm test
+
+Alternatively run just one of the test components
+
+    $ jshint .
+    $ karma start
+    $ protractor
 
 ## Development server
 
