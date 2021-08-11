@@ -39,7 +39,7 @@ Frameworks and dependencies include:
     </li>
 </ul>
 
-[See it in action](https://angular-boilerplate.herokuapp.com/)
+[See project in action](https://hscout.netlify.app/advertisements)
 
 # Running Locally
 
