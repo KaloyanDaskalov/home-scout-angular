@@ -39,7 +39,7 @@ Frameworks and dependencies include:
     </li>
 </ul>
 
-[See project in action](https://hscout.netlify.app/advertisements)
+[See project in action](https://hscout.netlify.app)
 
 # Running Locally
 
