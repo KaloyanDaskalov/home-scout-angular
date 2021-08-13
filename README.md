@@ -2,14 +2,16 @@
 
 <h4>powered by angular</h4>
 
-This is a demo project app for real estate advertisements. Build with Angular, Bootstrap 5 for UI/UX and Firebase as backend. The project consists of a main page with all the advertisements, authtentification and user area.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d0ad81bc-295b-4e53-9e8d-da71bdc37c54/deploy-status)](https://app.netlify.com/sites/hscout/deploys)
+
+This is a demo project app for real estate advertisements. Build with Angular, Bootstrap 5 for UI/UX and Firebase as backend. The project consists of a main page with all the advertisements, authentication and user area.
 
 Frameworks and dependencies include:
 
 - Angular
 - Bootstrap 5
 - Angular-fire
-- angular-fontawesome
+- angular-Font Awesome
 
 <h3>Project schema</h3>
 
