@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { faFacebookSquare, faTwitterSquare, faInstagramSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelopeSquare, faPhoneSquare, faPrint, faHome } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebookSquare,
+  faTwitterSquare,
+  faInstagramSquare,
+  faLinkedin,
+} from '@fortawesome/free-brands-svg-icons';
+import {
+  faEnvelopeSquare,
+  faPhoneSquare,
+  faPrint,
+  faHome,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
   faFacebookSquare = faFacebookSquare;
@@ -16,10 +26,9 @@ export class FooterComponent implements OnInit {
   faPhoneSquare = faPhoneSquare;
   faPrint = faPrint;
   faHome = faHome;
+  date = new Date().getFullYear();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
